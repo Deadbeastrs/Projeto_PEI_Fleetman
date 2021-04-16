@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Drone Relay</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/modal.css">
+  <link rel="stylesheet" href="assets/css/card.css">
+  <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/perfect-scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/table.css">
+</head>
+
+<body>
+  <!-- notification for small viewports and landscape oriented smartphones -->
+  <div class="device-notification">
+    <a class="device-notification--logo" href="#0">
+      <img src="assets/img/logo.png" class="logo">
+      <p>Drone Relay</p>
+    </a>
+    <p class="device-notification--message">We enhanced the connections between drones for a better user experience, for
+      a more confortable look at our site, open it in a device with a larger screen</p>
+  </div>
+
+  <div class="perspective effect-rotate-left">
+    <div class="container">
+      <div class="outer-nav--return"></div>
+      <div id="viewport" class="l-viewport">
+        <div class="l-wrapper">
+          <header class="header">
+            <a class="header--logo" href="#0">
+              <img src="assets/img/logo2.png" class="logo" alt="Drone Relay">
+              <p>Drone Relay</p>
+            </a>
+            <a class="header--cta cta" target="_blank"
+              href="https://github.com/Deadbeastrs/Projeto_PEI_Fleetman/tree/master/drone-relay-website">Github</a>
+            <div class="header--nav-toggle">
+              <span></span>
+            </div>
+          </header>
+          <nav class="l-side-nav">
+            <ul class="side-nav">
+              <li class="is-active"><span>Home</span></li>
+              <li><span>Project Plan</span></li>
+              <li><span>Deliverables</span></li>
+              <li><span>About</span></li>
+            </ul>
+          </nav>
+          <ul class="l-main-content main-content">
+            <li class="l-section section section--is-active">
+              <div class="intro">
+                <div class="intro--banner">
+                  <h1 style="font-size: 50px;">Aerial Drone<br>Platform for<br>scenarios of <br>limitation<br>and
+                    emergency</h1>
+                  <button class="cta">Team
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
+                      style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                        <path
+                          d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                      </g>
+                    </svg>
+                    <span class="btn-background"></span>
+                  </button>
+                  <img style="margin-bottom:100px;" src="assets/img/drone.png" alt="Welcome">
+                </div>
+                <div class="intro--options">
+                  <a href="#0" style="color:white;">
+                    <h3>Monitoring</h3>
+                    <p>Performance of network monitoring tasks</p>
+                  </a>
+                  <a href="#0" style="color:white;">
+                    <h3>Optimal</h3>
+                    <p>Relay drone adopts an optimal position through some parameters like network</p>
+                  </a>
+                  <a href="#0" style="color:white;">
+                    <h3>Dynamic</h3>
+                    <p>Dynamically adapts telemetry frenquency, transmission ratio and video quality according to
+                      current communication quality</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="l-section section">
+              <div class="work">
+                <h2>Project Plan</h2>
+                <div class="work--lockup">
+                  <ul class="slider">
+                    <li class="slider--item slider--item-left">
+                      <a href="#plan01">
+                        <div class="slider--item-image">
+                          <img src="assets/img/search_tree.png">
+                        </div>
+                        <p class="slider--item-title">Analysis and Planning</p>
+                        <p class="slider--item-description">Analyses on previous project implementation</p>
+                      </a>
+                    </li>
+                    <li class="slider--item slider--item-center">
+                      <a href="#plan06">
+                        <div class="slider--item-image">
+                          <img src="assets/img/network.png">
+                        </div>
+                        <p class="slider--item-title">Network Monitoring</p>
+                        <p class="slider--item-description">Development of a network monitoring sensor</p>
+                      </a>
+                    </li>
+                    <li class="slider--item slider--item-right">
+                      <a href="#plan02">
+                        <div class="slider--item-image">
+                          <img src="assets/img/relay4.png">
+                        </div>
+                        <p class="slider--item-title">Drone Relay</p>
+                        <p class="slider--item-description">Improve drone relay for large quantities of data</p>
+                      </a>
+                    </li>
+                    <li class="slider--item slider--item">
+                      <a href="#plan03">
+                        <div class="slider--item-image">
+                          <img src="assets/img/camera.jpg" alt="Alex Nowak">
+                        </div>
+                        <p class="slider--item-title">Video System</p>
+                        <p class="slider--item-description">Implement live drone camera feed</p>
+                      </a>
+                    </li>
+                    <li class="slider--item slider--item">
+                      <a href="#plan04">
+                        <div class="slider--item-image">
+                          <img src="assets/img/dashboard.png">
+                        </div>
+                        <p class="slider--item-title">Dashboard Implementation</p>
+                        <p class="slider--item-description">Web interface for drone control, mission planning and
+                          displaying live camera feed.
+                        </p>
+                      </a>
+                    </li>
+                    <li class="slider--item slider--item">
+                      <a href="#plan05">
+                        <div class="slider--item-image">
+                          <img src="assets/img/drone_in_hand.jpg">
+                        </div>
+                        <p class="slider--item-title">Field Testing</p>
+                        <p class="slider--item-description">Live testing of relay and video transmission via dashboard
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="slider--prev">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
+                      style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                        <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z" />
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="slider--next">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
+                      style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                        <path
+                          d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!--
+            <li class="l-section section">
+              <div class="template">
+                <h2>Weekly work</h2>
+                <div class="wrap-table" style="margin-top:20px">
+                  <div class="table">
+                    <table>
+                      <thead>
+                        <tr class="table-head">
+                          <th style="text-align: center;">March</th>
+                          <th style="text-align: center;">April</th>
+                          <th style="text-align: center;">May</th>
+                          <th style="text-align: center;">June</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="tr-divide-4">
+                          <td style="border-right: 1px solid;">
+                            <div><a>W1</a>
+                              <div class="information">
+                                boas
+                              </div>
+                            </div>
+                            <div><a>W2</a></div>
+                            <div><a>W3</a></div>
+                            <div><a>W4</a></div>
+                          </td>
+                          <td style="border-right: 1px solid;">
+                            <div><a>W1</a></div>
+                            <div><a>W2</a></div>
+                            <div><a>W3</a></div>
+                            <div><a>W4</a></div>
+                          </td>
+                          <td style="border-right: 1px solid;">
+                            <div><a>W1</a></div>
+                            <div><a>W2</a></div>
+                            <div><a>W3</a></div>
+                            <div><a>W4</a></div>
+                          </td>
+                          <td>
+                            <div><a>W1</a></div>
+                            <div><a>W2</a></div>
+                            <div><a>W3</a></div>
+                            <div><a>W4</a></div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div style="margin-top: 50px">
+                  boas
+
+                </div>
+              </div>
+            </li>
+            -->
+            <li class="l-section section">
+              <div class="template">
+                <h2>Deliverables</h2>
+                <div class="wrap-table" style="margin-top:20px">
+                  <div class="table">
+                    <table>
+                      <thead>
+                        <tr class="table-head">
+                          <th class="first-col">Milestone 1</th>
+                          <th>Milestone 2</th>
+                          <th>Milestone 3</th>
+                          <th class="last-col">Milestone 4</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="first-col"><a target="_blank" href="assets/files/PEI_slide.pdf">M1 Presentation</a>
+                          </td>
+                          <td><a target="_blank" href="assets/files/PEI_Apresentacao_M2.pdf">M2 Presentation</a></td>
+                          <td></td>
+                          <td class="last-col"></td>
+                        </tr>
+                        <tr>
+                          <td class="first-col"><a target="_blank"
+                              href="https://github.com/Deadbeastrs/Projeto_PEI_Fleetman/tree/master/drone-relay-website">Website</a>
+                          </td>
+                          <td><a target="_blank"
+                              href="assets/files/Report_DetailedTopics_ProjectCalendar.pdf">Relatorio</a></td>
+                          <td></td>
+                          <td class="last-col"></td>
+                        </tr>
+                        <tr>
+                          <td class="first-col"><a target="_blank" href="assets/files/Project_Calendar.pdf">M1: Project
+                              Calendar</a></td>
+                          <td></td>
+                          <td></td>
+                          <td class="last-col"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!--
+            <li class="l-section section">
+              <div class="contact">
+                <div class="contact--lockup">
+                  <div class="modal">
+                    <div class="modal--information">
+                      <p>Universidade de Aveiro & Instituto de Telecomunicações</p>
+                      <a href="mailto:ouremail@gmail.com">tiago.rainho@ua.pt</a>
+                      <a href="tel:+148126287560">925 815 409</a>
+                    </div>
+                    <ul class="modal--options">
+                      <li><a href="#0">Pensar aqui</a></li>
+                      <li><a href="#0">E aqui</a></li>
+                      <li><a href="mailto:trol@gmail.com">Contact Us</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            -->
+            <li class="l-section section">
+              <div class="template">
+                <div class="template--banner">
+                  <div class="card-container">
+                    <div class="card-profile">
+                      <a href="#tiago">
+                        <img src="assets/img/tiago.jpeg">
+                    </div>
+                    </a>
+                    <div class="card-profile">
+                      <a href="#luis">
+                        <img src="assets/img/luis.jpeg">
+                      </a>
+                    </div>
+                    <div class="card-profile">
+                      <a href="#gui">
+                        <img src="assets/img/gui.jpeg">
+                      </a>
+                    </div>
+                    <div class="card-profile">
+                      <a href="#diogo">
+                        <img src="assets/img/diogo.jpeg">
+                      </a>
+                    </div>
+                    <div class="card-profile">
+                      <a href="#margarida">
+                        <img src="assets/img/person.png">
+                      </a>
+                    </div>
+                    <div class="card-profile">
+                      <a href="#susana">
+                        <img src="assets/img/person.png">
+                      </a>
+                    </div>
+                    <div class="card-profile">
+                      <a href="#miguel">
+                        <img src="assets/img/person.png">
+                      </a>
+                    </div>
+                  </div>
+
+                  <!--
+                  <div class="card-container">
+                    <div class="card-wrapper">
+                      <div class="card-3d card-student" style="background-image: url('assets/img/tiago.jpeg')">
+
+                      </div>
+                    </div>
+                    <div class="card-wrapper">
+                      <a href="#luis">
+                        <div class="card-3d card-student" style="background-image: url('assets/img/luis.jpeg')">
+
+                        </div>
+                      </a>
+                    </div>
+                    <div class="card-wrapper">
+                      <a href="#gui">
+                        <div class="card-3d card-student" style="background-image: url('assets/img/gui.jpeg')">
+
+                        </div>
+                      </a>
+                    </div>
+                    <div class="card-wrapper">
+                      <a href="#diogo">
+                        <div class="card-3d card-student" style="background-image: url('assets/img/diogo.jpeg')">
+
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="card-wrapper">
+                      <a href="#susana">
+                        <div class="card-3d card-mentor">
+
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="card-wrapper">
+                      <a href="#margarida">
+                        <div class="card-3d card-mentor">
+
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="card-wrapper">
+                      <a href="#miguel">
+                        <div class="card-3d card-mentor">
+
+                        </div>
+                      </a>
+                    </div>
+                    -->
+
+                </div>
+                <!--
+                  <div class="about--options">
+                    <a href="#0">
+                      <h3>Tiago Rainho</h3>
+                    </a>
+                    <a href="#0">
+                      <h3>José Costa</h3>
+                    </a>
+                    <a href="#0">
+                      <h3>Guilherme Pereira</h3>
+                    </a>
+                    <a href="#0">
+                      <h3>Diogo Amaral</h3>
+                    </a>
+                  </div>
+                  
+
+                  <h2>We<br>believe in<br>passionate<br>people</h2>
+                  <a href="#0">Team
+                    <span>
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
+                        style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                          <path
+                            d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
+                        </g>
+                      </svg>
+                    </span>
+                  </a>
+                  -->
+                <!--<img src="assets/img/about-visual.png" alt="About Us">-->
+              </div>
+        </div>
+        </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="modal-container" id="plan01">
+      <div class="modal_modern">
+        <h1 class="modal__title">Analysis and Planning</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 2 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Analysis on previous project implementation</li>
+          <li>Study Technologies</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="plan02">
+      <div class="modal_modern">
+        <h1 class="modal__title">Drone Relay</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 6 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Improve drone relay for large quantities of data</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="plan03">
+      <div class="modal_modern">
+        <h1 class="modal__title">Video System</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 8 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Camera integration</li>
+          <li>Telemetry data improvement</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="plan04">
+      <div class="modal_modern">
+        <h1 class="modal__title">Dashboard Implementation</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 6 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Dashboard for drone control, mission planning and displaying live camera feed.</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="plan05">
+      <div class="modal_modern">
+        <h1 class="modal__title">Field Testing</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 2 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Live testing of relay and video transmission via dashboard</li>
+          <li>Live mission with all working components</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="plan06">
+      <div class="modal_modern">
+        <h1 class="modal__title">Network Monitoring</h1>
+        <p class="modal__text">
+          <span>Expected Duration: 4 weeks</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Development of a network monitoring sensor</li>
+          <li>Network statistics analysis</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="tiago">
+      <div class="modal_modern">
+        <h1 class="modal__title">Tiago Rainho</h1>
+        <p class="modal__text">
+          <span>Email: tiago.rainho@ua.pt</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>-</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="luis">
+      <div class="modal_modern">
+        <h1 class="modal__title">Luis Costa</h1>
+        <p class="modal__text">
+          <span>Email: joselcosta@ua.pt</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>- </li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="gui">
+      <div class="modal_modern">
+        <h1 class="modal__title">Guilherme Pereira</h1>
+        <p class="modal__text">
+          <span>Email: guilherme.pereira@ua.pt</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>-</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="diogo">
+      <div class="modal_modern">
+        <h1 class="modal__title">Diogo Amaral (Coordenador)</h1>
+        <p class="modal__text">
+          <span>Email: diogomra7@ua.pt</span><br>
+          <span>Tasks:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>-</li>
+        </ul>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+    <div class="modal-container" id="margarida">
+      <div class="modal_modern">
+        <h1 class="modal__title">Margarida Silva (Mentor)</h1>
+        <p class="modal__text">
+          <span>Email: email</span><br>
+        </p>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+    <div class="modal-container" id="susana">
+      <div class="modal_modern">
+        <h1 class="modal__title">Susana Sargento (Mentor)</h1>
+        <p class="modal__text">
+          <span>Email: email</span><br>
+        </p>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+    <div class="modal-container" id="miguel">
+      <div class="modal_modern">
+        <h1 class="modal__title">Miguel Luis (Mentor)</h1>
+        <p class="modal__text">
+          <span>Email: email</span><br>
+        </p>
+        <a href="#" class="modal-close"></a>
+      </div>
+    </div>
+
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active">Home</li>
+    <li>Project Plan</li>
+    <li>Deliverables</li>
+    <li>About</li>
+  </ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+  <script src="assets/js/functions-min.js"></script>
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/bootstrap/js/popper.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/select2.min.js"></script>
+  <script src="assets/js/table.js"></script>
+  <script src="assets/js/calendar.js"></script>
+</body>
+
+</html>

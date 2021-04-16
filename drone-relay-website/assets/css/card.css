@@ -1,0 +1,146 @@
+
+.card-container {
+    width: 100%;
+    display:flex;  
+    flex-wrap:wrap;
+    justify-content:space-around;
+}
+
+.card-profile {
+    cursor: pointer;
+    flex-basis: 20%;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 160px;
+    width: 100px;
+}
+
+.card-profile img {
+    width: 100%;
+    border-radius: 10px;
+    transform-origin: .5 .5;
+    background-size: cover !important;
+    background-position: 50% 50%;
+    transition: transform .25s, visibility .25s ease-in;
+}
+
+.card-profile:hover img {
+    transform: scale(1.2);
+  }
+
+.card-container a {
+    color: inherit;
+}
+
+.card-container div {
+    margin: 20px;
+}
+
+.card-wrapper {
+    position: relative;
+    perspective: 40em;
+    display: grid;
+    transform-style: preserve-3d;
+}
+
+.card-3d {
+    grid-area: 1 / 1;
+    height: 100px;
+    width: 150px;
+    transform: translateX(10px) rotateY(25deg) rotateX(10deg);
+    display: flex;
+    justify-content: flex-start;
+    background-size: cover !important;
+    background-position: 50% 50%;
+    align-items: center;
+    padding: 30px;
+    color: #000;
+    font-weight: 900;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
+    flex:1;
+}
+
+.card-3d:nth-child(1) {
+    background-image: url("../img/tiago.jpeg");
+}
+.card-3d:nth-child(2) {
+    background-image: url("../img/luis.jpeg");
+}
+.card-3d:nth-child(3) {
+    background-image: url("../img/gui.jpeg");
+}
+.card-3d:nth-child(4) {
+    background-image: url("../img/diogo.jpeg");
+}
+
+.card-wrapper:before {
+    --bw: 4px;
+    background-image: url("../img/diogo.jpeg");
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    
+    width: 100%;
+    margin-top: calc(-1 * var(--bw));
+    margin-left: calc(-1 * var(--bw));
+    background: transparent;
+    transform: translateX(-60px) rotateY(-30deg) rotateX(15deg) scale(1.03);
+    pointer-events: none;
+    border: transparent;
+    box-sizing: content-box;
+}
+
+.card-wrapper:nth-child(1):before {
+	content: 'Tiago Rainho';
+}
+
+.card-wrapper:nth-child(2):before {
+	content: 'Luis Costa';
+}
+
+.card-wrapper:nth-child(3):before {
+	content: 'Guilherme Pereira';
+}
+
+.card-wrapper:nth-child(4):before {
+	content: 'Diogo Amaral (Coordenador)';
+}
+
+.card-wrapper:nth-child(5):before {
+	content: 'Susana Sargento (Mentor)';
+}
+
+.card-wrapper:nth-child(6):before {
+	content: 'Margarida Silva (Mentor)';
+}
+
+.card-wrapper:nth-child(7):before {
+	content: 'Miguel Luis (Mentor)';
+}
+
+.about--options>a:nth-child(3) {
+	background-image: url("../img/about-history.jpg")
+}
+  
+  
+.card-wrapper:hover > div,
+.card-wrapper:hover:before {
+    transform: none;
+    border: var(--bw) solid blue;
+}
+
+
+.card-wrapper > div,
+.card-wrapper:before {
+    will-change: transform;
+    transition: .3s transform cubic-bezier(.25,.46,.45,1);
+}
+
+.card-student {
+
+}
+
+.card-mentor {
+
+}

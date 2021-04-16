@@ -1,0 +1,178 @@
+
+
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+/* ------------------------------------ */
+
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+.wrap-table {
+  margin: 0 auto;
+  width: 720px;
+}
+
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+table * {
+  position: relative;
+}
+table td, table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
+}
+table tbody tr {
+  height: 50px;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td, table th {
+  text-align: left;
+}
+table td.l, table th.l {
+  text-align: right;
+}
+table td.c, table th.c {
+  text-align: center;
+}
+table td.r, table th.r {
+  text-align: center;
+}
+
+.table-head th{
+  font-family: OpenSans-Regular;
+  font-size: 18px;
+  color: #848484;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: #b1b0b0;
+  line-height: 1.2;
+  font-weight: unset;
+  background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));;
+}
+
+tbody tr a {
+  background-color: inherit;
+  color: #b1b0b0;
+}
+
+tbody tr a:hover {
+  color: #fdfdfd;
+}
+
+.first-col {
+  padding-left: 40px;
+}
+
+.last-col {
+  padding-right: 40px;
+}
+
+table tbody tr td div a{
+  cursor:pointer;
+}
+table tbody tr td div .information, table tbody tr td div .title {
+  display:none;
+}
+
+table tbody .tr-divide-4 td {
+  column-count: 4;
+}
+
+@media screen and (max-width: 800px) {
+
+  .wrap-table {
+    width: 360px;
+    margin-top:0;
+  }
+
+  table {
+    display: block;
+  }
+  table > *, table tr, table td, table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 37px 0;
+  }
+  table tbody tr td {
+    padding-left: 40% !important;
+    margin-bottom: 24px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
+    font-family: OpenSans-Regular;
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.2;
+    font-weight: unset;
+    position: absolute;
+    width: 40%;
+    left: 30px;
+    top: 0;
+  }
+
+  .column4,
+  .column5,
+  .column6 {
+    text-align: left;
+  }
+
+  .column4,
+  .column5,
+  .column6,
+  .column1,
+  .column2,
+  .column3 {
+    width: 100%;
+  }
+
+  tbody tr {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-table {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
