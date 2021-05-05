@@ -1891,10 +1891,19 @@ a:focus {
 .week_button.active a {
 	padding-left: 8px;
 	padding-right: 8px;
-
+	/*
 	padding-top: -10px;
 	padding-bottom: -10px;
+	*/
 	border-radius: 5px;
 	background-color: #d4dadf;
 	color:rgba(0, 0, 0, 0.75)
+}
+
+.information {
+	height: 200px;
+}
+
+.information li {
+	margin-bottom: 8px;
 }
