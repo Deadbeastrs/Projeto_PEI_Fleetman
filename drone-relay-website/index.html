@@ -48,8 +48,9 @@
             <ul class="side-nav">
               <li class="is-active"><span>Home</span></li>
               <li><span>Project Plan</span></li>
+              <li><span>Weekly work</span></li>
               <li><span>Deliverables</span></li>
-              <li><span>About</span></li>
+              <li><span>Team</span></li>
             </ul>
           </nav>
           <ul class="l-main-content main-content">
@@ -117,7 +118,8 @@
                           <img src="assets/img/relay4.png">
                         </div>
                         <p class="slider--item-title">Drone Relay Algorithm</p>
-                        <p class="slider--item-description">Develop a algorithm that places relay drones in an optimal position</p>
+                        <p class="slider--item-description">Develop a algorithm that places relay drones in an optimal
+                          position</p>
                       </a>
                     </li>
                     <li class="slider--item slider--item">
@@ -146,7 +148,8 @@
                           <img src="assets/img/drone_in_hand.jpg">
                         </div>
                         <p class="slider--item-title">Automatic adjustment of <br>video parameters</p>
-                        <p class="slider--item-description">Automatic adjutsment of video parameters such as video quality
+                        <p class="slider--item-description">Automatic adjutsment of video parameters such as video
+                          quality
                         </p>
                       </a>
                     </li>
@@ -195,7 +198,6 @@
                 </div>
               </div>
             </li>
-            <!--
             <li class="l-section section">
               <div class="template">
                 <h2>Weekly work</h2>
@@ -213,45 +215,56 @@
                       <tbody>
                         <tr class="tr-divide-4">
                           <td style="border-right: 1px solid;">
-                            <div><a>W1</a>
+                            <div class="week_button active">
+                              <a>W1</a>
+                              <div class="title">March, Week 1</div>
                               <div class="information">
-                                boas
+                                Na primeira semana fizemos cocó e xixi
                               </div>
                             </div>
-                            <div><a>W2</a></div>
-                            <div><a>W3</a></div>
-                            <div><a>W4</a></div>
+                            <div class="week_button">
+                              <a>W2</a>
+                              <div class="title">March, Week 2</div>
+                              <div class="information">
+                                Na segunda semana
+                              </div>
+                            </div>
+                            <div class="week_button"><a>W3</a></div>
+                            <div class="week_button"><a>W4</a></div>
                           </td>
                           <td style="border-right: 1px solid;">
-                            <div><a>W1</a></div>
-                            <div><a>W2</a></div>
-                            <div><a>W3</a></div>
-                            <div><a>W4</a></div>
+                            <div class="week_button"><a>W1</a></div>
+                            <div class="week_button"><a>W2</a></div>
+                            <div class="week_button"><a>W3</a></div>
+                            <div class="week_button"><a>W4</a></div>
                           </td>
                           <td style="border-right: 1px solid;">
-                            <div><a>W1</a></div>
-                            <div><a>W2</a></div>
-                            <div><a>W3</a></div>
-                            <div><a>W4</a></div>
+                            <div class="week_button"><a>W1</a></div>
+                            <div class="week_button"><a>W2</a></div>
+                            <div class="week_button"><a>W3</a></div>
+                            <div class="week_button"><a>W4</a></div>
                           </td>
                           <td>
-                            <div><a>W1</a></div>
-                            <div><a>W2</a></div>
-                            <div><a>W3</a></div>
-                            <div><a>W4</a></div>
+                            <div class="week_button"><a>W1</a></div>
+                            <div class="week_button"><a>W2</a></div>
+                            <div class="week_button"><a>W3</a></div>
+                            <div class="week_button"><a>W4</a></div>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <div style="margin-top: 50px">
-                  boas
+                <div style="margin-top: 50px" id="show_week_work">
+                  <h3 class="title">
 
+                  </h3>
+                  <div class="information">
+
+                  </div>
                 </div>
               </div>
             </li>
-            -->
             <li class="l-section section">
               <div class="template">
                 <h2>Deliverables</h2>
@@ -296,26 +309,6 @@
                 </div>
               </div>
             </li>
-            <!--
-            <li class="l-section section">
-              <div class="contact">
-                <div class="contact--lockup">
-                  <div class="modal">
-                    <div class="modal--information">
-                      <p>Universidade de Aveiro & Instituto de Telecomunicações</p>
-                      <a href="mailto:ouremail@gmail.com">tiago.rainho@ua.pt</a>
-                      <a href="tel:+148126287560">925 815 409</a>
-                    </div>
-                    <ul class="modal--options">
-                      <li><a href="#0">Pensar aqui</a></li>
-                      <li><a href="#0">E aqui</a></li>
-                      <li><a href="mailto:trol@gmail.com">Contact Us</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </li>
-            -->
             <li class="l-section section">
               <div class="template">
                 <div class="template--banner">
@@ -356,98 +349,10 @@
                       </a>
                     </div>
                   </div>
-
-                  <!--
-                  <div class="card-container">
-                    <div class="card-wrapper">
-                      <div class="card-3d card-student" style="background-image: url('assets/img/tiago.jpeg')">
-
-                      </div>
-                    </div>
-                    <div class="card-wrapper">
-                      <a href="#luis">
-                        <div class="card-3d card-student" style="background-image: url('assets/img/luis.jpeg')">
-
-                        </div>
-                      </a>
-                    </div>
-                    <div class="card-wrapper">
-                      <a href="#gui">
-                        <div class="card-3d card-student" style="background-image: url('assets/img/gui.jpeg')">
-
-                        </div>
-                      </a>
-                    </div>
-                    <div class="card-wrapper">
-                      <a href="#diogo">
-                        <div class="card-3d card-student" style="background-image: url('assets/img/diogo.jpeg')">
-
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="card-wrapper">
-                      <a href="#susana">
-                        <div class="card-3d card-mentor">
-
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="card-wrapper">
-                      <a href="#margarida">
-                        <div class="card-3d card-mentor">
-
-                        </div>
-                      </a>
-                    </div>
-
-                    <div class="card-wrapper">
-                      <a href="#miguel">
-                        <div class="card-3d card-mentor">
-
-                        </div>
-                      </a>
-                    </div>
-                    -->
-
                 </div>
-                <!--
-                  <div class="about--options">
-                    <a href="#0">
-                      <h3>Tiago Rainho</h3>
-                    </a>
-                    <a href="#0">
-                      <h3>José Costa</h3>
-                    </a>
-                    <a href="#0">
-                      <h3>Guilherme Pereira</h3>
-                    </a>
-                    <a href="#0">
-                      <h3>Diogo Amaral</h3>
-                    </a>
-                  </div>
-                  
-
-                  <h2>We<br>believe in<br>passionate<br>people</h2>
-                  <a href="#0">Team
-                    <span>
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
-                        style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                          <path
-                            d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z" />
-                        </g>
-                      </svg>
-                    </span>
-                  </a>
-                  -->
-                <!--<img src="assets/img/about-visual.png" alt="About Us">-->
               </div>
         </div>
         </li>
-
         </ul>
       </div>
     </div>
@@ -465,7 +370,7 @@
           <li>already been done plays a fundamental role on the project. </li>
           <li>This task allows us to better understand and use the</li>
           <li>technologies needed to develop the other tasks.</li>
-          
+
         </ul>
         <a href="#" class="modal-close"></a>
       </div>
@@ -498,7 +403,7 @@
         </p>
         <ul style="margin-left: 80px">
           <li>This task consists in integrating the capture of video footage</li>
-          <li>from a camera placed on the drone to be displayed</li> 
+          <li>from a camera placed on the drone to be displayed</li>
           <li>in multiple devices, using the dashboard.</li>
         </ul>
         <a href="#" class="modal-close"></a>
@@ -529,9 +434,12 @@
           <span>Description:</span>
         </p>
         <ul style="margin-left: 80px">
-          <li>This task consists of transmitting video with <li>
-          <li>different qualities automatically, <li>
-          <li>taking into account the quality of the network at the specific time.<li>
+          <li>This task consists of transmitting video with
+          <li>
+          <li>different qualities automatically,
+          <li>
+          <li>taking into account the quality of the network at the specific time.
+          <li>
         </ul>
         <a href="#" class="modal-close"></a>
       </div>
@@ -564,9 +472,12 @@
           <span>Description:</span>
         </p>
         <ul style="margin-left: 80px">
-          <li>This task consists of transmitting different <li>
-          <li>amounts of telemetry data automatically, <li>
-          <li>taking into account the quality of the network at the specific time.<li>
+          <li>This task consists of transmitting different
+          <li>
+          <li>amounts of telemetry data automatically,
+          <li>
+          <li>taking into account the quality of the network at the specific time.
+          <li>
         </ul>
         <a href="#" class="modal-close"></a>
       </div>
@@ -677,8 +588,9 @@
   <ul class="outer-nav">
     <li class="is-active">Home</li>
     <li>Project Plan</li>
+    <li>Weekly work</li>
     <li>Deliverables</li>
-    <li>About</li>
+    <li>Team</li>
   </ul>
   </div>
 
@@ -690,7 +602,7 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/select2.min.js"></script>
   <script src="assets/js/table.js"></script>
-  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/weekly-work.js"></script>
 </body>
 
 </html>

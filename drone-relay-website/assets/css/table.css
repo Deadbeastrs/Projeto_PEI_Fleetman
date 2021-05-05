@@ -45,7 +45,8 @@ table td, table th {
 }
 table thead tr {
   height: 60px;
-  background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
+  /*background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%)); */
+  background: #4458CE
 }
 table tbody tr {
   height: 50px;
@@ -69,7 +70,7 @@ table td.r, table th.r {
 .table-head th{
   font-family: OpenSans-Regular;
   font-size: 18px;
-  color: #848484;
+  color: white;
   line-height: 1.2;
   font-weight: unset;
 }
@@ -78,7 +79,7 @@ tbody tr {
   font-family: OpenSans-Regular;
   font-size: 15px;
   color: #b1b0b0;
-  line-height: 1.2;
+  line-height: 1.5;
   font-weight: unset;
   background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));;
 }

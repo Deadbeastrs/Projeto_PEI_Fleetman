@@ -1774,8 +1774,8 @@ body {
 .outer-nav>li {
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	-webkit-transform: translateX(350px) translateZ(-1000px);
-	transform: translateX(350px) translateZ(-1000px);
+	-webkit-transform: translateX(150px) translateZ(-1000px);
+	transform: translateX(150px) translateZ(-1000px);
 	font-size: 55px;
 	font-weight: 900;
 	opacity: 0;
@@ -1886,4 +1886,15 @@ a:link {
 
 a:focus {
   outline: none;
+}
+
+.week_button.active a {
+	padding-left: 8px;
+	padding-right: 8px;
+
+	padding-top: -10px;
+	padding-bottom: -10px;
+	border-radius: 5px;
+	background-color: #d4dadf;
+	color:rgba(0, 0, 0, 0.75)
 }
