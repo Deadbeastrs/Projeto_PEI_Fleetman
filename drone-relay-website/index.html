@@ -339,13 +339,28 @@
                             <div class="week_button"><a>W2</a>
                               <div class="title">May, Week 2</div>
                               <div class="information">
-
+                                <ul>
+                                  <li>Session with Margarida Silva and Nuno Ferreira to test the drones on the field, in automatic programmed mode.</li>
+                                  <li>Continuation of the milestone 3 presentation.</li>
+                                  <li>Debugging errors on relay algorithms.</li>
+                                  <li>Add video live feature.</li>
+                                  <li>Add video live feature.</li>
+                                  <li>Initialization of the automatic adjustment of telemetry sending ratio.</li>
+                                  <li>Camera documentation.</li>
+                                </ul>
                               </div>
                             </div>
                             <div class="week_button"><a>W3</a>
                               <div class="title">May, Week 3</div>
                               <div class="information">
-
+                                <ul>
+                                  <li>Production of the video for the milestone 3 presentation.</li>
+                                  <li>Integrate network sensor on relay algorithm.</li>
+                                  <li>Manual quality video changing on the dashboard.</li>
+                                  <li>Trying to adapt quality video changing, manual to automatic.</li>
+                                  <li>Analise how to change telemetric sending ratio.</li>
+                                  <li>Initialization of the final technical report.</li>
+                                </ul>
                               </div>
                             </div>
                             <div class="week_button"><a>W4</a>
@@ -466,17 +481,17 @@
                     </div>
                     <div class="card-profile">
                       <a href="#margarida">
-                        <img src="assets/img/person.png">
+                        <img src="assets/img/margarida.jpeg">
                       </a>
                     </div>
                     <div class="card-profile">
                       <a href="#susana">
-                        <img src="assets/img/person.png">
+                        <img src="assets/img/susana.jpeg">
                       </a>
                     </div>
                     <div class="card-profile">
                       <a href="#miguel">
-                        <img src="assets/img/person.png">
+                        <img src="assets/img/miguel.jpeg">
                       </a>
                     </div>
                   </div>
@@ -528,14 +543,23 @@
       <div class="modal_modern">
         <h1 class="modal__title">Camera Integration</h1>
         <p class="modal__text">
-          <span>Status: Ongoing</span><br>
-          <span>Expected Time: 3 weeks (April 15 - May 7)</span><br>
+          <span>Status: Completed 1ª Version</span><br>
+          <span>Time: 3 weeks (April 15 - May 7)</span><br>
           <span>Description:</span>
         </p>
         <ul style="margin-left: 80px">
-          <li>This task consists in integrating the capture of video footage</li>
-          <li>from a camera placed on the drone to be displayed</li>
+          <li>This task consists in integrating the capture of video footage.</li>
+          <li>from a camera placed on the drone to be displayed.</li>
           <li>in multiple devices, using the dashboard.</li>
+        </ul>
+
+        <p class="modal__text">
+          <span>Future implovements:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>Update ROS version. </li>
+          <li>Decode gstreamer on PC with Nvidia grafics.</li>
+          <li>Fix Avlib encoder.</li>
         </ul>
         <a href="#" class="modal-close"></a>
       </div>
@@ -580,8 +604,8 @@
       <div class="modal_modern">
         <h1 class="modal__title">Network Sensor</h1>
         <p class="modal__text">
-          <span>Status: Ongoing</span><br>
-          <span>Expected Time: 5 weeks (April 1 - May 7)</span><br>
+          <span>Status: Finished 1ª version</span><br>
+          <span>Time: 5 weeks (April 1 - May 7)</span><br>
           <span>Description:</span>
         </p>
         <ul style="margin-left: 80px">
@@ -589,6 +613,14 @@
           <li>that will run on the drones capable of monitoring the network</li>
           <li>characteristics between the drones, the ground station and forward </li>
           <li>that information to the ground station.</li>
+        </ul>
+        <p class="modal__text">
+          <span>Future Improvements:</span>
+        </p>
+        <ul style="margin-left: 80px">
+          <li>In a future version this module can be improved in some aspects.
+            One such improvement is in the way this module calculates the latency between two nodes, as it makes use of pings which inject traffic in the network.
+          </li>
         </ul>
         <a href="#" class="modal-close"></a>
       </div>
