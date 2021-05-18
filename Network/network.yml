@@ -1,0 +1,6 @@
+type: network
+requiresDrone: true
+requiresSensorId: true
+retrieval: map
+parameters: List
+timeout: 10000

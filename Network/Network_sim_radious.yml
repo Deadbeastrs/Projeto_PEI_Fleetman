@@ -1,0 +1,6 @@
+droneId: drone01
+sensorTopic: /sensors
+telemTopic: /telem
+rate: 200
+Radious: 160
+
