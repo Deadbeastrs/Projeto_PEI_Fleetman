@@ -41,3 +41,30 @@ Run the sensor:
 python3 Network.py -c configs/Network.yml
 ```
 
+## Fleet-manager
+
+First clone and open the fleetman-manager.
+Run the server:
+```sh
+cd deploy && ./launch_prod_env.sh
+```
+
+## Relay Module
+
+
+## Dashboard and Backend
+
+First clone the dashboard repository.
+Install mongodb and enable the service:
+```sh
+sudo systemctl start mongod
+```
+Run the backend:
+```sh
+cd Django/GpsTracker && docker-compose up --build
+```
+On another terminal session run the frontend:
+```sh
+cd webportal/ && docker-compose up --build
+```
+
