@@ -4,7 +4,7 @@
 
 ### Encoder
 
-To run the encoder, execute the Video/scripts/run_x264_encoder.sh with the arguments -n <droneId>.
+To run the encoder, execute the Video/scripts/run_x264_encoder.sh with the arguments -n `DroneId`.
  
 ```sh
 ./run_x264_encoder.sh -n <droneId>
@@ -12,17 +12,17 @@ To run the encoder, execute the Video/scripts/run_x264_encoder.sh with the argum
 
 ### Decoder and server
 
-To run the decoder, execute the Video/scripts/run_x264_decoder.sh with the arguments -n <droneId>, corresponding to the encoder id.
+To run the decoder, execute the Video/scripts/run_x264_decoder.sh with the arguments -n `DroneId`, corresponding to the encoder id.
 
 ```sh
 ./run_x264_decoder.sh -n <droneId>
 ```
 
-To run the flask server on the same device as the decoder. Run the Video/scripts/run_video_server.sh with arguments -a <address> -p <port>.
+To run the flask server on the same device as the decoder. Run the Video/scripts/run_video_server.sh with arguments -a `address` -p `port`.
 ```sh
 ./run_video_server.sh -a <ipAddress> -p <port>
 ```
-Launch the dashboard, add a drone and when questioned about the ip, enter <ip>:<port> configured in the flask server.
+Launch the dashboard, add a drone and when questioned about the ip, enter `address`:`port` configured in the flask server.
 
 ## Network Sensor
 
