@@ -6,7 +6,7 @@ move_forward = { drone, distance, deg ->
 }
 
 gs = [id: "groundStation", position: [lat: 40.634675, lon: -8.660091], ip: '10.1.1.4', mac: 'b4:6b:fc:48:80:19']
-//enable 'new_relay', rate: 500.ms, groundstation: gs, simulation: false
+enable 'relay_plugin', rate: 500.ms, groundstation: gs
 drone01 = assign 'drone01'
 arm drone01
 takeoff drone01

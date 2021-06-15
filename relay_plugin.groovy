@@ -12,15 +12,10 @@ def return_home = { drone ->
 def move_to = { drone, lat, lon, alt ->
     if(drone.distance([lat: lat, lon: lon])>50.cm) {
         if((String)drone.cmd == 'goto' && drone.cmd.target.distance([lat: lat, lon: lon])<50.cm) return
-        if((String)drone.cmd == 'return') {
-            cancel drone
-        }
-	println("state " + drone.id + ": " + (String)drone.state)
-        if((String)drone.state == 'ready' || drone.state == ready) {
-		println("passou pq tava ready")
-		return
-	}
-	println(drone.id + " move to " + lat + ", " + lon)
+        if((String)drone.state == 'ready' || drone.state == ready) return
+
+        if((String)drone.cmd == 'return') cancel drone
+	    println(drone.id + " move to " + lat + ", " + lon)
         run { move drone to lat: lat, lon: lon, speed: 9 }
     }
 }
@@ -51,52 +46,6 @@ public class Utils {
 
         double distance = (Math.sin(dlat / 2)**2) + Math.cos(lat1) * Math.cos(lat2) * (Math.sin(dlon / 2)**2)
         return 2 * Math.asin(Math.sqrt(distance)) * 6371000
-    }
-
-}
-
-// SEARCH CLASSES
-
-public class Node {
-	def state = null;
-	Node parent = null;
-	int depth = null;
-    float heuristic = 0;
-
-	public Node(state, Node parent, int depth) {
-		this.state = state;
-        this.parent = parent;
-        this.depth = depth;
-	}
-
-    def apply_heuristics = {
-        this.heuristic = this.state.heuristic
-    }
-
-    def in_parent = { state ->
-        if(this.state == state) return true
-        if(this.parent == null) return false
-        return self.parent.in_parent(state)
-    }
-
-    def hash = {
-        return this.state.hash()
-    }
-}
-
-public class DronesMovimentation {
-    def movements = null;
-    def mission_goals = null;
-    def longest_path_length = null;
-    def sum_path_length = 0;    
-
-    public DronesMovimentation(movements, missing_goals) {
-        this.movements = movements
-        this.missing_goals = missing_goals
-    }
-
-    public heuristic = {
-        return 1
     }
 
 }
@@ -332,7 +281,7 @@ public class NetworkState {
     def relay_bridges = [:];            // drone.id : DroneRelayBridge
     def mission_drones = [];            // Drone[]
     def groundstations = [];            // Groundstation[]
-    def connected_links = []//.toSet();   // RelayLink[]
+    def connected_links = []            // RelayLink[]
     def networks = [:]                  // drone.id : SensorInfo
     def bridges_stack = [];             // DroneRelayBridge[]
 
@@ -478,10 +427,7 @@ def init_state = {
             tags: []
         ]
     }
-    
-
     groundstations.add(groundstation)
-
     network_state = new NetworkState(groundstations)
 }
 
@@ -500,17 +446,11 @@ def relay = { drones ->
                 def drone_id = relay_link.entity.id
                 def network = sensor.(drone_id).network
                 println("network: " + network)
-		if(network != null) {
-                    if(simulation) {
-                        network = network.simulated
-                    }
-                    else {
-                        network = network.real
-                    }
-			//println(network)
-                    def value = network[0]["groundStation"]
+		        if(network != null) {
+                    if(simulation) network = network.simulated
+                    else network = network.real
 
-                    //println(drone_id + " sensor: " + value)
+                    def value = network[0]["groundStation"]
                     network_state.networks[drone_id] = value
                 }
             }
@@ -519,12 +459,8 @@ def relay = { drones ->
 
     // get mission drones from all drones
     for(drone in drones) {
-        if(drone.params.tags.contains('relay')) {
-            relay_drones.add(drone)
-        }
-        else {
-            mission_drones.add(drone)
-        }
+        if(drone.params.tags.contains('relay')) relay_drones.add(drone)
+        else mission_drones.add(drone)
     }
 
     // add new relay bridge for new mission_drones
