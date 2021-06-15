@@ -32,7 +32,7 @@ def parse_args():
 def current_time_millis():
     return int(round(time.time() * 1000))
 
-def calc_network(distance,relay,radious,GlobalTx):
+def calc_network(distance,droneID,radious,GlobalTx):
     #Values derived from graph analysis on the real Network sensor
     if distance < radious:
         if distance == 0:
@@ -64,14 +64,12 @@ def calc_network(distance,relay,radious,GlobalTx):
                 TxBit = (-50/183)*distance+50
             else:
                 Latency = "error"
-
         if sig < 70 and RxBit >= 2.0:
             NetworkQuality = "HIGH"
         elif sig < 80 and RxBit > 1.0:
             NetworkQuality = "MEDIUM"
         elif sig > 80 or RxBit == "error":
             NetworkQuality = "LOW"
-        
         NetStats = {
         "Station": "00:00:00:00:00:00",
         "IP": "0.0.0.0",
@@ -81,12 +79,12 @@ def calc_network(distance,relay,radious,GlobalTx):
         "RxBit": str(RxBit) + " MBit/s",
         "TxBit" : str(TxBit)+ " MBit/s",
         "NetworkQuality": NetworkQuality,
-        "Relay": relay[0]
+        "Relay": droneID
         }
 
-        return [NetStats]
+        return NetStats
     else:
-        return [{}]
+        return {}
 
 class NetworkSensor(Node):
 
@@ -124,9 +122,10 @@ class NetworkSensor(Node):
         if cfg.get('Radious') is not None:
             self.Radious = cfg.get('Radious')
 
-
+        self.rate = 0.1
         super().__init__('network', namespace=self.drone_id + '/sensor')
-        self.relay = ("groundStation","0.0.0.0")
+        #self.relay = [('groundStation','0.0.0.0')]
+        self.relay = {"groundStation" : [("groundStation","0.0.0.0")], "Relay" :[("groundStation","0.0.0.0")] }
 
         self.subscription = \
             self.create_subscription(String, self.telem_topic, lambda msg: self.drone_telem_callback(msg.data), 10)
@@ -181,21 +180,80 @@ class NetworkSensor(Node):
 
     def drone_info_callback(self, msg): 
            info = json.loads(msg)
-           if info.get('droneId') == self.drone_id and info.get('target') is not None and info.get('targetIP') is not None:
-               self.relay = (info.get('target'), info.get('targetIP'))
-
+           if info.get('droneId') == self.drone_id and info.get('connectionsId') is not None and info.get('connectionsIp') is not None:
+               tempArray = []
+               droneIDs = info.get('connectionsId')
+               droneIPs = info.get('connectionsIp')
+               numberOfConnections = len(droneIDs)
+               if(len(droneIDs) != len(droneIPs)):
+                   tempArray = []
+               else:
+                   for i in range(numberOfConnections):
+                       tempArray.append((droneIDs[i],droneIPs[i]))
+               self.relay['groundStation'] = tempArray
+           elif info.get('droneId') == self.drone_id and info.get('RelayId') is not None and info.get('RelayIp') is not None:
+               tempArray = []
+               droneIDs = info.get('RelayId')
+               droneIPs = info.get('RelayIp')
+               numberOfConnections = len(droneIDs)
+               if(len(droneIDs) != len(droneIPs)):
+                   tempArray = []
+               else:
+                   for i in range(numberOfConnections):
+                       tempArray.append((droneIDs[i],droneIPs[i]))
+               self.relay['Relay'] = tempArray
 
     def get_network(self):
         self.GlobalTx += 1
-        if self.relay[0] == "All":
-            return [{}]
-        network = calc_network(self.distance(self.otherDrones[self.relay[0]]),self.relay,self.Radious,self.GlobalTx)
-        return network
+        returnValue = []
+        for request in self.relay.keys():
+            returnValueTemp = []
+            
+            for connection in self.relay[request]:
+                network = calc_network(self.distance(self.otherDrones[connection[0]]),connection[0],self.Radious,self.GlobalTx)
+                returnValueTemp.append(network)
+            
+            returnValue.append(returnValueTemp)
+
+        RelayValues = returnValue[1]
+        mapper = {"HIGH" : 3 , "MEDIUM" : 2, "LOW" : 1}
+        quality = "HIGH"
+        for relay in RelayValues:
+            quality2 = relay.get('NetworkQuality')
+            if quality2 is not None:
+                if mapper[quality2] < mapper[quality]:
+                    quality = quality2
+            else:
+                quality = "Disconnected"
+
+        self.changeTelemRate(quality)
+
+        dictionaryReturn = {}
+        dictionaryReturn['groundStation'] = returnValue[0]
+        dictionaryReturn['Relay'] = quality
+        return [dictionaryReturn]
 
     def distance(self,other_coords):
         distance = haversine(self.coords, other_coords, unit=Unit.METERS)
         return distance
 
+
+    def changeTelemRate(self,quality):
+        if quality == "HIGH" and self.rate != 0.2:
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 200",shell = True)
+            self.destroy_timer(self.timer)
+            self.rate = 0.2
+            self.timer = self.create_timer(self.rate, self.pub_network_callback)
+        elif quality == "MEDIUM" and self.rate != 0.4:
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 400",shell = True)
+            self.destroy_timer(self.timer)
+            self.rate = 0.4
+            self.timer = self.create_timer(self.rate, self.pub_network_callback)
+        elif quality == "LOW" and self.rate != 0.6:
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 600",shell = True)
+            self.destroy_timer(self.timer)
+            self.rate = 0.6
+            self.timer = self.create_timer(self.rate, self.pub_network_callback)
 
 def main(args=None):
     rclpy.init(args=args)

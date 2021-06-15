@@ -14,12 +14,37 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+            
         </div>
       </div>
     </nav>
-    <div class="text-center">
-      <img src="video_feed/drone01" style="max-width:1280px" class="img-fluid" alt="...">
+    <div class="text-center" id="ola">
+       
     </div>
   </body>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    async function start() {
+        var socket = io("ws://192.168.1.2:8090");
+        socket.connect();
+        socket.emit('drone', 'drone01');
+        while(socket.disconnected){
+            await new Promise(r => setTimeout(r, 1000));
+        }
+        document.getElementById("ola").innerHTML = '<img src="http://192.168.1.2:8090/video_feed/drone01" style="max-width:1280px" class="img-fluid" alt="...">';
+        /*
+        socket.on("connection", async function(socket){
+            console.log("sdsdsd")
+            await new Promise(r => setTimeout(r, 1000));
+            document.getElementById("ola").innerHTML = '<img src="http://10.0.22.157:8090/video_feed/drone01" style="max-width:1280px" class="img-fluid" alt="...">';
+        });*/
+        //while(socket.disconnect){
+        //}
+    }
+    start();
+</script>
 </html>
