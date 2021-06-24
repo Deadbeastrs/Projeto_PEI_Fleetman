@@ -1,26 +1,10 @@
 droneId: drone01
 sensorTopic: /sensors
 telemTopic: /telem
-rate: 200
-groundStation_IP: "10.1.1.3" 
+rateHigh: 200
+rateMedium: 300
+rateLow: 400
+groundStation_IP: "10.1.1.4"
+groundStation_MAC: "b4:6b:fc:48:80:19"
 interface: "wlan0"
-Table:
-  - Device: 
-      mac: "24:0a:64:6b:c0:11"
-      ip: "10.1.1.3"
-  - Device:
-      mac: "f8:d1:11:08:47:7c"
-      ip: "10.1.1.100"
-  
-  - Device:
-      mac: "f4:f2:6d:0d:c0:7f"
-      ip: "10.1.1.2"
-
-  - Device:
-      mac: "a0:f3:c1:1a:95:ed"
-      ip: "10.1.1.4"
-
-  - Device:
-      mac: "a0:f3:c1:1a:66:62"
-      ip: "10.1.1.1"
 

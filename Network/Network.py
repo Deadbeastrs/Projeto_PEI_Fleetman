@@ -40,7 +40,6 @@ def calc_network(id,ip,mac,interface,times):
             res = res.decode("utf-8")
             ips = []
             latencys = []
-           
         except:
             print("DEVICE NOT CONNECTED")
             return {}
@@ -48,6 +47,7 @@ def calc_network(id,ip,mac,interface,times):
         Signal = re.findall("(?<=signal:\\s{2}\\t)(-?\\d+)",res)
         TxBit = re.findall("(?<=tx bitrate:\\s)(\d+.\\d\\s.+\\/s)",res)
         RxBit = re.findall("(?<=rx bitrate:\\s)(\d+.\\d\\s.+\\/s)",res)
+
         #Prevent error when RxBit is Unkwon  
         if len(RxBit) != len(Signal) :
             return {}
@@ -61,7 +61,6 @@ def calc_network(id,ip,mac,interface,times):
         "TxByte": TxByte[0],
         "RxBit": RxBit[0],
         "TxBit" : TxBit[0],
-        
         }
         
         
@@ -82,25 +81,25 @@ def calc_network(id,ip,mac,interface,times):
     latencys = []
 
     #Retrive the latency by perforing pings
-    for i in range(2):
+    for i in range(1):
         try:
             latency = sp.check_output('ping -c 1 -w 1 ' + ip ,shell = True)
             latency.decode("utf-8")
             latency = re.findall("(?<=time=)\d*.?\d*",str(latency))
             latencys.append(latency[0])
         except:
-            latencys.append("250")
+            latencys.append("1000")
     sum = 0
-    for i in range(0, len(latency)):    
-        sum = sum + float(latency[i]);
-    latency = sum / 2
+    for i in range(0, len(latencys)):    
+        sum = sum + float(latencys[i]);
+    latency = sum / 1
 
-    #Retrive interface current throughput in kb/s (works but its too slow for drone data)
+    #Retrive interface current throughput in kb/s
     #try:
     #    res2 = sp.check_output('sar -n DEV 1 1 | grep ' + interface + ' | tail -n1',shell = True)
     #    res2 = res2.decode("utf-8")
     #    res2 = res2.split(" ")
-    #    throughput = str(res2[31])
+    #    throughput = str(res2[32])
     #except:
     #    throughput = "unkwon"
 
@@ -111,8 +110,7 @@ def calc_network(id,ip,mac,interface,times):
         Station['Signal'] = Station['Signal'] + float(Message.get('Signal'))
         Station['RxBit'] = Station['RxBit'] +float(Message.get('RxBit').split(" ")[0]) 
         Station['TxBit'] = Station['TxBit'] + float(Message.get('TxBit').split(" ")[0])
-    
-
+        
 
     #Divide the Parameters to get the avarage
     RxBit = round(Station['RxBit']/times,2)
@@ -123,20 +121,12 @@ def calc_network(id,ip,mac,interface,times):
     Station['RxBit'] = str(RxBit) + " MBit/s"
     Station['TxBit'] = str(TxBit) + " MBit/s"
 
-    #res3 = sp.check_output('ifconfig ' + interface,shell = True)
-    #res3 = res3.decode("utf-8")
-    #Erros = re.findall("TX errors .+",res3)
-    #TxErrors = Erros[0].split(" ")[2]
-    #TxCollisions = Erros[0].split(" ")[13]
-    #Station['TxCollisions'] = TxCollisions
-    #Station['TxErrors'] = TxErrors
-
     NetworkQuality = ""
 
     #Make a estimate of the network quality based on some parameters
-    if (Signal) <= 60 and (latency) <= 16 and (TxBit) >= 5 and RxBit >= 5:
+    if (Signal) < 60 and (latency) < 50 and (TxBit) > 5:
         NetworkQuality = "HIGH"
-    elif (Signal) <= 75 and (latency) <= 33 and (TxBit) >= 2 and RxBit >= 2:
+    elif (Signal) <= 75 and (latency) < 100 and (TxBit) > 3:
         NetworkQuality = "MEDIUM"
     else:
         NetworkQuality = "LOW"
@@ -148,13 +138,17 @@ class NetworkSensor(Node):
 
     def __init__(self):
 
-        self.rate = 1
+        self.rate = 0.2
         self.sensor_topic = '/sensor/network'
         self.telem_topic = '/telem'
         self.info_topic = '/info'
         self.coords = None
         self.times = 0
-
+        self.rate_low = 0.4
+        self.rate_medium = 0.3
+        self.rate_high = 0.2
+        
+        #self.logger = open(str(current_time_millis()) + ".txt","w")
         cfg, export, self.silence = parse_args()
 
         if cfg is None:
@@ -171,8 +165,15 @@ class NetworkSensor(Node):
         
         if cfg.get('telemTopic') is not None:
             self.telem_topic = cfg.get('telemTopic')
-        if cfg.get('rate') is not None:
-            self.rate = cfg.get('rate') / 1000
+
+        if cfg.get('rateHigh') is not None:
+            self.rate_high = cfg.get('rateHigh') / 1000
+
+        if cfg.get('rateMedium') is not None:
+            self.rate_medium = cfg.get('rateMedium') / 1000
+
+        if cfg.get('rateLow') is not None:
+            self.rate_low = cfg.get('rateLow') / 1000
 
         
         if cfg.get('groundStation_IP') is None:
@@ -224,7 +225,8 @@ class NetworkSensor(Node):
         #publish the network quality in the topic
         msg = String()
         value = self.get_network()
-        
+        #self.logger.write(str(value))
+	#self.logger.flush()
         msg.data = json.dumps(
             {'droneId': self.drone_id, 'sensorId': 'real','type': 'network',
              'timestamp': current_time_millis(), 'value': value})
@@ -284,7 +286,7 @@ class NetworkSensor(Node):
 
         #Retrive the network quality parameters to send to the ground Station
         for i in range(len(self.relay['groundStation'])):
-            returnMessageGs.append(calc_network(self.relay['groundStation'][i][0],self.relay['groundStation'][i][1],self.relay['groundStation'][i][2],self.interface,50))
+            returnMessageGs.append(calc_network(self.relay['groundStation'][i][0],self.relay['groundStation'][i][1],self.relay['groundStation'][i][2],self.interface,100))
         returnValue['groundStation'] = returnMessageGs
 
 
@@ -293,7 +295,7 @@ class NetworkSensor(Node):
 
         #Retrive the network quality between the relay drones
         for i in range(len(self.relay['Relay'])):
-            returnMessageRelay = calc_network(self.relay['Relay'][i][0],self.relay['Relay'][i][1],self.relay['Relay'][i][2],self.interface,50)
+            returnMessageRelay = calc_network(self.relay['Relay'][i][0],self.relay['Relay'][i][1],self.relay['Relay'][i][2],self.interface,100)
             print(returnMessageRelay)
             if returnMessageRelay != {}:
                 returnMessageRelay = returnMessageRelay.get('NetworkQuality')
@@ -313,20 +315,25 @@ class NetworkSensor(Node):
     def changeTelemRate(self,quality):
 
         #Change telemetry sending rate and sensor sending rate when network quality changes 
-        if quality == "HIGH" and self.rate != 0.4:
-            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 400",shell = True)
+        if quality == "HIGH" and self.rate != self.rate_high:
+            temp = str(self.rate_high * 1000)
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs " + temp,shell = True)
             self.destroy_timer(self.timer)
-            self.rate = 0.4
+            self.rate = self.rate_high
             self.timer = self.create_timer(self.rate, self.pub_network_callback)
-        elif quality == "MEDIUM" and self.rate != 0.5:
-            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 500",shell = True)
+
+        elif quality == "MEDIUM" and self.rate != self.rate_medium:
+            temp = str(self.rate_medium * 1000)
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs " + temp,shell = True)
             self.destroy_timer(self.timer)
-            self.rate = 0.5
+            self.rate = self.rate_medium
             self.timer = self.create_timer(self.rate, self.pub_network_callback)
-        elif quality == "LOW" and self.rate != 0.6:
-            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs 600",shell = True)
+
+        elif quality == "LOW" and self.rate != self.rate_low:
+            temp = str(self.rate_low * 1000)
+            sp.run("ros2 param set /" + self.drone_id + " telemetryRateMs " + temp,shell = True)
             self.destroy_timer(self.timer)
-            self.rate = 0.6
+            self.rate = sel.rate_low
             self.timer = self.create_timer(self.rate, self.pub_network_callback)
 
 def main(args=None):
