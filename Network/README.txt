@@ -27,5 +27,5 @@ RUN apt-get install iputils-ping -y
 #Install haversine
 RUN pip3 install haversine
 
-#Install haversine
+#Install matplotlib
 RUN pip3 install matplotlib
